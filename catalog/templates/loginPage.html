@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %} SerHodor {% endblock %} {% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//apis.google.com/js/platform.js?onload=start"></script>
+<div class="container login-main">
+    <h1 class="text-center">continue with</h1>
+    
+    <div id="signInButton" class="text-center">
+        <span class="g-signin" data-scope="openid email" data-clientid="334299608716-kcqripbmkbai5n6av1g2efh26taetkvb.apps.googleusercontent.com" data-redirecturi="postmessage" data-accesstype="offline" data-cookiepolicy="single_host_origin" data-callback="signInCallback" data-approvalprompt="force"></span>
+    </div>
+
+</div>
+    <div id="result" class="text-center"></div>
+<script type="text/javascript">
+function signInCallback(authResult) {
+    if (authResult['code']) {
+
+        // Hide the sign-in button now that the user is authorized
+        $('#signInButton').addClass("unclickable");
+
+        // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+        $.ajax({
+            type: 'POST',
+            url: '/gconnect?state={{STATE}}',
+            processData: false,
+            data: authResult['code'],
+            contentType: 'application/octet-stream; charset=utf-8',
+            success: function(result) {
+                // Handle or verify the server response if necessary.
+                if (result) {
+                    $('.login-main').hide();
+                    $('#result').html(result + '</br>Redirecting back to previous page...')
+                    setTimeout(function() {
+                        location.replace(document.referrer);
+                    }, 4000);
+                } else if (authResult['error']) {
+                    console.log('There was an error: ' + authResult['error']);
+                } else {
+                    $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                }
+            }
+        });
+        $('#signInButton').removeClass("unclickable");
+    }
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% block title %} {{category_name}} {% endblock %} 
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-offset-2 col-xs-4">
+            <ul>
+                <li><h2>Categories</h2></li>
+            </ul>
+            <ul>
+                {% for cat in cats %}
+                    <li><a href='{{url_for("categoryPage", category_name=cat.name)}}'>{{cat.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>  
+        <div class="col-xs-5">
+            <ul>
+                <li><h2>{{category_name}}<br><small>{{items|length}} items</small></h2></li>
+            </ul>
+            <ul>
+                {% for item in items %}
+                    <li><a href='{{url_for("itemPage", category_name=category_name, item_name=item.name)}}'>{{item.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-2 col-xs-4">
+            
+        </div>  
+        <div class="col-xs-5">
+            
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

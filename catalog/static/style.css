@@ -1,0 +1,67 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    background-color: #e6dbff;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 3.5em;
+}
+
+h2 {
+    color: #7d97ad;
+    padding-left: 0.2em;
+    margin-bottom: 15px;
+}
+
+p {
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+hr {
+    border: none;
+    height: 4px;
+    color: #7d97ad;
+    background-color: #7d97ad;
+}
+
+footer {
+    background-color: #C8C8FF;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 15px;
+    background-color: #F58A4B;
+    font-size: 1.2em;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.logo {
+    height: 5em;
+    margin-top: 1.5em;
+}
+
+.navbar {
+    background-color: #C8C8FF;
+}
+
+.unclickable {
+    pointer-events: none
+}
+
+.content {
+    min-height: 100vh;
+}

@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% block title %} {% if item: %}{{item.name}}{% endif %} {% endblock %} 
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <h2>
+                Delete Item
+            </h2>
+            <p>Are you sure you want to delete ?</p>
+            <form method="post" action='{{url_for("deleteItemPage", item_name=item.name, category_name=cat.name)}}'>
+            	<input type="submit" class="btn btn-sm btn-danger" name="Delete">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

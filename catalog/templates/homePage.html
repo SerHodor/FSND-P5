@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% block title %} Home {% endblock %} 
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-offset-2 col-xs-4">
+            <ul>
+                <li><h2>Categories</h2></li>
+            </ul>
+        </div>  
+        <div class="col-xs-5">
+            <ul>
+                <li><h2>How to :</h2></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-2 col-xs-4">
+            <ul>
+                {% for cat in cats %}
+                    <li><a href='{{url_for("categoryPage", category_name=cat.name)}}'>{{cat.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>  
+        <div class="col-xs-5">
+            <ul>
+                <li>Click on any category to view the items</li>
+                <li>Log in to Add new items</li>
+                <li>Modify your items whenever you want</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

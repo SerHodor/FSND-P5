@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% block title %} Add New Item {% endblock %} 
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+            <form method="post" action='{{url_for("addItemPage")}}'>
+                <h2>Add New Item</h2>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" placeholder="Title" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="5" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="category_name">
+                        {% for cat in cats %}
+                            <option value="{{cat.name}}">{{cat.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
